@@ -21,7 +21,7 @@
     </target>
     <target name="doc-blox">
         <exec executable="docblox" dir="${source}" logerror="on">
-            <arg line="run -d  ${source}/application -t ${base}/api "/>
+            <arg line="run -d  ${source} -t ${base}/api "/>
         </exec>
     </target>
 
