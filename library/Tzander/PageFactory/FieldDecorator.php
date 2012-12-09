@@ -1,7 +1,7 @@
 <?php
 namespace Tzander\PageFactory;
 
-interface FieldDecorator {
-
+interface FieldDecorator
+{
     public function decorate(\ReflectionProperty $property);
 }

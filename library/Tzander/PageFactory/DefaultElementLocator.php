@@ -1,5 +1,6 @@
 <?php
 namespace Tzander\PageFactory;
+
 use Tzander\PageFactory\NoElementFoundException;
 
 class DefaultElementLocator implements ElementLocator

@@ -1,7 +1,7 @@
 <?php
 namespace Tzander\PageFactory;
 
-interface ElementLocator {
-
+interface ElementLocator
+{
     public function findElement();
 }

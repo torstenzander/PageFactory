@@ -1,5 +1,6 @@
 <?php
 namespace Tzander\PageFactory;
+
 use Tzander\PageFactory\ElementLocatorFactory;
 
 class DefaultElementLocatorFactory implements ElementLocatorFactory

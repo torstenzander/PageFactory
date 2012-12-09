@@ -21,7 +21,7 @@
     </target>
     <target name="doc-blox">
         <exec executable="docblox" dir="${source}" logerror="on">
-            <arg line="run -d  ${source} -t ${base}/api "/>
+            <arg line="run -d  ${base}/${source} -t ${base}/api "/>
         </exec>
     </target>
 
@@ -60,6 +60,8 @@
             <arg
                     line=" --debug
 						--log-junit ${base}/build/logs/junit.xml
+						--coverage-clover ${base}/build/logs/clover.xml
+            			--coverage-html ${base}/web
             			--configuration ${base}/tests/phpunit.xml"/>
         </exec>
     </target>
