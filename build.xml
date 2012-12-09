@@ -56,7 +56,7 @@
 
     <!-- unittesting - creates 2 log files a test log and a coverage log -->
     <target name="phpunit">
-        <exec dir="${source}/tests" executable="phpunit" failonerror="true">
+        <exec dir="${base}/tests" executable="phpunit" failonerror="true">
             <arg
                     line=" --debug
 						--log-junit ${base}/build/logs/junit.xml
