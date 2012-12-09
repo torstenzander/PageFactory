@@ -60,7 +60,7 @@
             <arg
                     line=" --debug
 						--log-junit ${base}/build/logs/junit.xml
-            			--configuration ${source}/tests/phpunit.xml"/>
+            			--configuration ${base}/tests/phpunit.xml"/>
         </exec>
     </target>
 
