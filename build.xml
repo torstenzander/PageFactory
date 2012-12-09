@@ -48,7 +48,7 @@
             <arg
                     line="--ignore=${exclude_lib}
 					--extensions=php
-					--standard=${source}/tests/ruleset.xml
+					--standard=PSR-2
             		--report=checkstyle ${source}
             		"/>
         </exec>
