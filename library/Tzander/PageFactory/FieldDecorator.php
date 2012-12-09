@@ -3,5 +3,5 @@ namespace Tzander\PageFactory;
 
 interface FieldDecorator {
 
-    public function decorate();
+    public function decorate(\ReflectionProperty $property);
 }

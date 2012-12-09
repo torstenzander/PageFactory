@@ -1,0 +1,76 @@
+<project name="pageFactory" default="build">
+
+    <property file="build.properties"/>
+    <property name="source" value="library"/>
+
+    <property name="exclude_lib" value="tests"/>
+
+    <target name="build" depends="clean,prepare,phpunit"/>
+    <target name="clean">
+        <delete dir="build"/>
+        <delete dir="api"/>
+        <delete dir="web"/>
+    </target>
+
+    <!-- create the used directories -->
+    <target name="prepare">
+        <mkdir dir="build/logs"/>
+        <mkdir dir="build/screenshots"/>
+        <mkdir dir="api"/>
+        <mkdir dir="web"/>
+    </target>
+    <target name="doc-blox">
+        <exec executable="docblox" dir="${source}" logerror="on">
+            <arg line="run -d  ${source}/application -t ${base}/api "/>
+        </exec>
+    </target>
+
+    <!-- detects the copy and paste parts -->
+    <target name="phpcpd" depends="prepare">
+        <exec dir="${base}" executable="phpcpd" failonerror="false">
+            <arg line="--log-pmd build/logs/cpd.xml	${source}"/>
+        </exec>
+    </target>
+
+    <!-- pdepend uses some metrics -->
+    <target name="pdepend" depends="prepare">
+        <exec dir="${base}" executable="pdepend" failonerror="false">
+            <arg
+                    line="--ignore=${exclude_lib}
+                    --jdepend-xml=build/logs/jdepend.xml ${source}"/>
+        </exec>
+    </target>
+
+    <!-- codesniffer checks the source for some coding style violations -->
+    <target name="phpcs" depends="prepare">
+        <exec dir="${base}" executable="phpcs"
+              output="${base}/build/logs/checkstyle.xml" failonerror="false">
+            <arg
+                    line="--ignore=${exclude_lib}
+					--extensions=php
+					--standard=${source}/tests/ruleset.xml
+            		--report=checkstyle ${source}
+            		"/>
+        </exec>
+    </target>
+
+    <!-- unittesting - creates 2 log files a test log and a coverage log -->
+    <target name="phpunit">
+        <exec dir="${source}/tests" executable="phpunit" failonerror="true">
+            <arg
+                    line=" --debug
+						--log-junit ${base}/build/logs/junit.xml
+            			--configuration ${source}/tests/phpunit.xml"/>
+        </exec>
+    </target>
+
+    <target name="phpmd">
+        <exec dir="${source}/" executable="phpmd" failonerror="false">
+            <arg
+                    line=". xml codesize
+              --reportfile ${base}/build/logs/pmd.xml
+              --exclude ${exclude_lib}"/>
+        </exec>
+    </target>
+    <target name="release" depends="build"/>
+</project>

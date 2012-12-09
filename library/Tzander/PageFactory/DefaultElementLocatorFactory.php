@@ -9,14 +9,20 @@ class DefaultElementLocatorFactory implements ElementLocatorFactory
      */
     private $testCase;
 
-
+    /**
+     * @param \PHPUnit_Extensions_Selenium2TestCase $testCase
+     */
     public function __construct(\PHPUnit_Extensions_Selenium2TestCase $testCase)
     {
         $this->testCase = $testCase;
     }
 
-    public function createLocator(ReflectionProperty $field)
+    /**
+     * @param \ReflectionProperty $property
+     * @return DefaultElementLocator
+     */
+    public function createLocator(\ReflectionProperty $property)
     {
-        return new DefaultElementLocator($this->testCase, $field);
+        return new DefaultElementLocator($this->testCase, $property);
     }
 }
