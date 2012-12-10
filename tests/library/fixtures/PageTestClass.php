@@ -11,7 +11,7 @@ class PageTestClass {
     /**
      * @var PHPUnit_Extensions_Selenium2TestCase_Element
      *
-     * @find(By->id="test")
+     * @find ByClass='test'
      */
     public $link;
 }

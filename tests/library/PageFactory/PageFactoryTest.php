@@ -3,7 +3,7 @@ namespace Tzander\Tests;
 
 use Tzander\PageFactory;
 
-require_once "fixtures/PageTestClass.php";
+require_once dirname(__FILE__)."/../fixtures/PageTestClass.php";
 
 class PageFactoryTest extends \PHPUnit_Framework_TestCase
 {
