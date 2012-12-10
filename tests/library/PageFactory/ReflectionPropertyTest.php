@@ -22,7 +22,17 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetAnnotation()
     {
-        $value = $this->reflection->getFindAnnotation("find");
+        $value = $this->reflection->getFindAnnotation();
         $this->assertEquals("ByClass='test'", $value);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldGetNoValue()
+    {
+        $reflection = new ReflectionProperty(new \PageTestClass, 'nolink');
+        $value = $reflection->getFindAnnotation();
+        $this->assertEquals("", $value);
     }
 }

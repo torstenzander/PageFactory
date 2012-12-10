@@ -10,16 +10,26 @@ namespace Tzander\PageFactory;
  *
  */
 
-class ReflectionProperty extends  \ReflectionProperty{
+class ReflectionProperty extends \ReflectionProperty
+{
 
-    public function getFindAnnotation($nameOfAnnotation){
-       $comment = $this->getDocComment();
+    /**
+     * @return string
+     */
+    public function getFindAnnotation()
+    {
+        $comment = $this->getDocComment();
         if (preg_match($this->getRegExForFindAnnotation(), $comment, $matches)) {
-           return $matches[1];
+            return $matches[1];
         }
+        return "";
     }
 
-    private function getRegExForFindAnnotation(){
-         return '/@find\s+([a-zA-Z0-9._="\':-\\\\x7f-\xff]+)/';
+    /**
+     * @return string
+     */
+    private function getRegExForFindAnnotation()
+    {
+        return '/@find\s+([a-zA-Z0-9._="\':-\\\\x7f-\xff]+)/';
     }
 }

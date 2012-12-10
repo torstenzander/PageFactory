@@ -14,4 +14,6 @@ class PageTestClass {
      * @find ByClass='test'
      */
     public $link;
+
+    public $nolink;
 }
