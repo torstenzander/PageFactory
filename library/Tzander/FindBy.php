@@ -17,6 +17,9 @@ class FindBy
      */
     private $findBy;
 
+    /**
+     * @var string
+     */
     private $methodName;
 
     /**
@@ -24,6 +27,9 @@ class FindBy
      */
     private $methodParts;
 
+    /**
+     * @var array
+     */
     private $validFindBys = array(
         "byId",
         "byName",
