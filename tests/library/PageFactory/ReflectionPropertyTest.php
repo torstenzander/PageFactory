@@ -12,6 +12,11 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
      */
     private $reflection;
 
+    /**
+     * @find byXpath='a[@class=test]'
+     */
+    public $testProperty;
+
     public function setUp()
     {
         $this->reflection = new ReflectionProperty(new \PageTestClass, 'link');
@@ -33,8 +38,18 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
     {
         $reflection = new ReflectionProperty(new \PageTestClass, 'nolink');
         $value = $reflection->getFindAnnotation();
-        $this->assertEquals("", $value);
+        $this->assertNull($value);
     }
 
-    //TODO: Test with @ in xpath
+    /**
+     * @test
+     */
+    public function testXpathSyntax()
+    {
+        $reflection = new ReflectionProperty($this, 'testProperty');
+        $value = $reflection->getFindAnnotation();
+        $this->assertInstanceOf('\Tzander\FindBy', $value);
+    }
+
+
 }

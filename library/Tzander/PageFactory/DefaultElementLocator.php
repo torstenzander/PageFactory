@@ -43,6 +43,7 @@ class DefaultElementLocator implements ElementLocator
         if (is_null($element)) {
             $element = $this->testCase->byName($this->property);
         }
+        //TODO: Annotation call_user_func
         return $element;
     }
 }
