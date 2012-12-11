@@ -34,7 +34,6 @@ class PageFactoryTest extends \PHPUnit_Framework_TestCase
         $url = new \PHPUnit_Extensions_Selenium2TestCase_URL("http://localhost");
         $driver = $this->getMock("PHPUnit_Extensions_Selenium2TestCase_Driver", array(), array($url));
         $element = $this->getMock("PHPUnit_Extensions_Selenium2TestCase_Element", array(), array($driver, $url));
-
         $elementLocator = $this->getMock(
             "Tzander\PageFactory\DefaultElementLocatorFactory",
             array(),

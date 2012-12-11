@@ -22,8 +22,8 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetAnnotation()
     {
-        $value = $this->reflection->getFindAnnotation();
-        $this->assertEquals("ByClass='test'", $value);
+        $findBy = $this->reflection->getFindAnnotation();
+        $this->assertInstanceOf('\Tzander\FindBy', $findBy);
     }
 
     /**
@@ -35,4 +35,6 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
         $value = $reflection->getFindAnnotation();
         $this->assertEquals("", $value);
     }
+
+    //TODO: Test with @ in xpath
 }
