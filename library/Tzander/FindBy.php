@@ -76,6 +76,4 @@ class FindBy
         $stripped = str_replace(array('"', "'"), array("",""), $this->methodParts[1]);
         return $stripped;
     }
-
-
 }

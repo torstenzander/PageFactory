@@ -28,9 +28,10 @@ class Annotations
     /**
      * @return string
      */
-    public function buildBy(){
+    public function buildBy()
+    {
         $findBy = $this->property->getFindAnnotation();
-        if(is_null($findBy)){
+        if (is_null($findBy)) {
             throw new \InvalidArgumentException("No find method given in annotation @find");
         }
         return $findBy->getFindMethod();
