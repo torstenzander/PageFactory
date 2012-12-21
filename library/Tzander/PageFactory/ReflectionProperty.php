@@ -43,5 +43,4 @@ class ReflectionProperty
     {
         return '/@find\s+([a-zA-Z0-9._()=@"\':-\\\\x7f-\xff]+)/';
     }
-
 }

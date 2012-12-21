@@ -45,5 +45,4 @@ class Annotations
         }
         return true;
     }
-
 }
