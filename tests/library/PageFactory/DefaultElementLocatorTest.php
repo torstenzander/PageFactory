@@ -29,11 +29,16 @@ class DefaultElementLocatorTest extends \PHPUnit_Framework_TestCase {
      * @test
      */
     public function shouldFindElementById(){
-        $testCase = $this->getMock("PHPUnit_Extensions_Selenium2TestCase", array("byId"));
+        $testCase = $this->getMock("PHPUnit_Extensions_Selenium2TestCase", array("byId", "byName"));
         $testCase->expects($this->any())
             ->method("byId")
             ->will($this->returnValue($this->element));
-        $property = $this->getMock("ReflectionProperty", array(), array("PageTestClass", 'link'));
+        $testCase->expects($this->any())
+            ->method("byName")
+            ->will($this->returnValue(null));
+
+        $property = new \ReflectionProperty(new \PageTestClass(), "link");
+        $property = $this->getMock("\Tzander\PageFactory\ReflectionProperty", array(), array($property));
 
         $this->locator = new DefaultElementLocator($testCase, $property);
 
@@ -50,7 +55,13 @@ class DefaultElementLocatorTest extends \PHPUnit_Framework_TestCase {
         $testCase->expects($this->any())
             ->method("byName")
             ->will($this->returnValue($this->element));
-        $property = $this->getMock("ReflectionProperty", array(), array("PageTestClass", 'link'));
+
+        $testCase->expects($this->any())
+            ->method("byClassName")
+            ->will($this->returnValue(null));
+
+        $property = new \ReflectionProperty(new \PageTestClass(), "link");
+        $property = $this->getMock("\Tzander\PageFactory\ReflectionProperty", array(), array($property));
 
         $this->locator = new DefaultElementLocator($testCase, $property);
 

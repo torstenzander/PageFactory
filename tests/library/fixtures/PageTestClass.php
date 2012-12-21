@@ -15,5 +15,13 @@ class PageTestClass {
      */
     public $link;
 
+    /**
+     * @var PHPUnit_Extensions_Selenium2TestCase_Element
+     *
+     * @find byClassName='test'
+     */
+    public $submit;
+
+
     public $nolink;
 }

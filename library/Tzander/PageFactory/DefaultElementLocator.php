@@ -10,6 +10,7 @@ namespace Tzander\PageFactory;
  *
  */
 use Tzander\PageFactory\NoElementFoundException;
+use Tzander\PageFactory\Annotations;
 
 class DefaultElementLocator implements ElementLocator
 {
@@ -20,16 +21,18 @@ class DefaultElementLocator implements ElementLocator
     private $testCase;
 
     /**
-     * @var \ReflectionProperty
+     * @var \Tzander\PageFactory\ReflectionProperty
      */
     private $property;
 
     /**
-     * @param \PHPUnit_Extensions_Selenium2TestCase $testCase
-     * @param \ReflectionProperty                   $property
+     * @param \PHPUnit_Extensions_Selenium2TestCase                    $testCase
+     * @param Tzander\PageFactory\ReflectionProperty                   $property
      */
-    public function __construct(\PHPUnit_Extensions_Selenium2TestCase $testCase, \ReflectionProperty $property)
-    {
+    public function __construct(
+        \PHPUnit_Extensions_Selenium2TestCase $testCase,
+        \Tzander\PageFactory\ReflectionProperty $property
+    ) {
         $this->testCase = $testCase;
         $this->property = $property;
     }
@@ -39,11 +42,19 @@ class DefaultElementLocator implements ElementLocator
      */
     public function findElement()
     {
-        $element = $this->testCase->byId($this->property);
+        $element = null;
+        $annotation = new Annotations($this->property);
+        if ($annotation->hasFindAnnotation()) {
+            $findBy = $annotation->buildBy();
+            $methodName = $findBy->getFindMethod();
+            $element =  call_user_func(array($this->testCase, $methodName), $findBy->getArguments());
+        }
         if (is_null($element)) {
             $element = $this->testCase->byName($this->property);
         }
-        //TODO: Annotation call_user_func
+        if (is_null($element)) {
+            $element = $this->testCase->byId($this->property);
+        }
         return $element;
     }
 }

@@ -23,10 +23,10 @@ class DefaultFieldDecorator implements FieldDecorator
     }
 
     /**
-     * @param \ReflectionProperty $property
+     * @param \Tzander\PageFactory\ReflectionProperty $property
      * @return \PHPUnit_Extensions_Selenium2TestCase_Element
      */
-    public function decorate(\ReflectionProperty $property)
+    public function decorate(\Tzander\PageFactory\ReflectionProperty $property)
     {
         $locator = $this->factory->createLocator($property);
         $handler = new LocatingElementHandler($locator);

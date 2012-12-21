@@ -11,5 +11,5 @@ namespace Tzander\PageFactory;
 */
 interface ElementLocatorFactory
 {
-    public function createLocator(\ReflectionProperty $property);
+    public function createLocator(\Tzander\PageFactory\ReflectionProperty $property);
 }

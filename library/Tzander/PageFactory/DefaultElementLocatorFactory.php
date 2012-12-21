@@ -27,10 +27,10 @@ class DefaultElementLocatorFactory implements ElementLocatorFactory
     }
 
     /**
-     * @param \ReflectionProperty $property
+     * @param \\Tzander\PageFactory\ReflectionProperty $property
      * @return DefaultElementLocator
      */
-    public function createLocator(\ReflectionProperty $property)
+    public function createLocator(\Tzander\PageFactory\ReflectionProperty $property)
     {
         return new DefaultElementLocator($this->testCase, $property);
     }

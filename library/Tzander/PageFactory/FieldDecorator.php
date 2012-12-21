@@ -11,5 +11,5 @@ namespace Tzander\PageFactory;
 */
 interface FieldDecorator
 {
-    public function decorate(\ReflectionProperty $property);
+    public function decorate(\Tzander\PageFactory\ReflectionProperty $property);
 }

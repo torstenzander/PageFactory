@@ -12,14 +12,24 @@ namespace Tzander\PageFactory;
 
 use Tzander\FindBy;
 
-class ReflectionProperty extends \ReflectionProperty
+class ReflectionProperty
 {
+    /**
+     * @var \ReflectionProperty
+     */
+    private $property;
+
+    public function __construct(\ReflectionProperty $property)
+    {
+        $this->property = $property;
+    }
+
     /**
      * @return null|\Tzander\FindBy
      */
     public function getFindAnnotation()
     {
-        $comment = $this->getDocComment();
+        $comment = $this->property->getDocComment();
         if (preg_match($this->getRegExForFindAnnotation(), $comment, $matches)) {
             return new FindBy($matches[1]);
         }
@@ -33,4 +43,5 @@ class ReflectionProperty extends \ReflectionProperty
     {
         return '/@find\s+([a-zA-Z0-9._()=@"\':-\\\\x7f-\xff]+)/';
     }
+
 }

@@ -29,7 +29,9 @@ class LocatingElementHandlerTest extends \PHPUnit_Framework_TestCase
 
         $testCase = $this->getMock("PHPUnit_Extensions_Selenium2TestCase");
 
-        $property = $this->getMock("ReflectionProperty", array(), array("PageTestClass", 'link'));
+        $property = new \ReflectionProperty(new \PageTestClass(), "link");
+        $property = $this->getMock("\Tzander\PageFactory\ReflectionProperty", array(), array($property));
+
         $locator = $this->getMock(
             "Tzander\PageFactory\DefaultElementLocator",
             array("findElement"),

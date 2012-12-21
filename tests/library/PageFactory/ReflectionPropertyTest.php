@@ -19,7 +19,8 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->reflection = new ReflectionProperty(new \PageTestClass, 'link');
+        $reflection = new \ReflectionProperty(new \PageTestClass, 'link');
+        $this->reflection = new ReflectionProperty($reflection);
     }
 
     /**
@@ -36,8 +37,9 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetNoValue()
     {
-        $reflection = new ReflectionProperty(new \PageTestClass, 'nolink');
-        $value = $reflection->getFindAnnotation();
+        $reflection = new \ReflectionProperty(new \PageTestClass, 'nolink');
+        $pageFactoryReflection = new ReflectionProperty($reflection);
+        $value = $pageFactoryReflection->getFindAnnotation();
         $this->assertNull($value);
     }
 
@@ -46,8 +48,9 @@ class ReflectionPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testXpathSyntax()
     {
-        $reflection = new ReflectionProperty($this, 'testProperty');
-        $value = $reflection->getFindAnnotation();
+        $reflection = new \ReflectionProperty(new \PageTestClass, 'link');
+        $pageFactoryReflection = new ReflectionProperty($reflection);
+        $value = $pageFactoryReflection->getFindAnnotation();
         $this->assertInstanceOf('\Tzander\FindBy', $value);
     }
 

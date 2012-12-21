@@ -26,7 +26,8 @@ class Annotations
     }
 
     /**
-     * @return string
+     * @return null|\Tzander\FindBy
+     * @throws \InvalidArgumentException
      */
     public function buildBy()
     {
@@ -34,6 +35,15 @@ class Annotations
         if (is_null($findBy)) {
             throw new \InvalidArgumentException("No find method given in annotation @find");
         }
-        return $findBy->getFindMethod();
+        return $findBy;
     }
+
+    public function hasFindAnnotation()
+    {
+        if (is_null($this->property->getFindAnnotation())) {
+            return false;
+        }
+        return true;
+    }
+
 }

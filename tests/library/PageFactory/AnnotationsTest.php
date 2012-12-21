@@ -20,19 +20,28 @@ class AnnotationsTest extends \PHPUnit_Framework_TestCase
 
     public $propertyWithNoMethod;
 
-    public function setUp()
+    /**
+     * @test
+     */
+    public function getFindMethod()
     {
+        $property = new \ReflectionProperty($this, "testProperty");
+        $property = new ReflectionProperty($property);
+        $annotation = new Annotations($property);
+        $findBy = $annotation->buildBy();
+        $this->assertEquals('byName', $findBy->getFindMethod());
     }
 
     /**
      * @test
      */
-    public function getFindByMethod()
+    public function getFindArgument()
     {
-        $property = new ReflectionProperty($this, "testProperty");
+        $property = new \ReflectionProperty($this, "testProperty");
+        $property = new ReflectionProperty($property);
         $annotation = new Annotations($property);
-        $method = $annotation->buildBy();
-        $this->assertEquals('byName', $method);
+        $findBy = $annotation->buildBy();
+        $this->assertEquals('test', $findBy->getArguments());
     }
 
     /**
@@ -41,7 +50,8 @@ class AnnotationsTest extends \PHPUnit_Framework_TestCase
      */
     public function catchException()
     {
-        $property = new ReflectionProperty($this, "propertyWithNoMethod");
+        $property = new \ReflectionProperty($this, "propertyWithNoMethod");
+        $property = new ReflectionProperty($property);
         $annotation = new Annotations($property);
         $annotation->buildBy();
     }

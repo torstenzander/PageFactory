@@ -12,13 +12,14 @@ namespace Tzander;
 
 use Tzander\PageFactory\DefaultElementLocatorFactory;
 use Tzander\PageFactory\DefaultFieldDecorator;
+use Tzander\PageFactory\ReflectionProperty;
 
 class PageFactory
 {
 
     /**
      * @param \PHPUnit_Extensions_Selenium2TestCase $testCase
-     * @param Object                                $pageClassname
+     * @param object                                $pageClassname
      * @return mixed
      */
     public static function initElements(\PHPUnit_Extensions_Selenium2TestCase $testCase, $pageClassname)
@@ -30,7 +31,7 @@ class PageFactory
 
     /**
      * @param \PHPUnit_Extensions_Selenium2TestCase $testCase
-     * @param Object                                $page
+     * @param object                                $page
      */
     public static function initElementsWithObject(\PHPUnit_Extensions_Selenium2TestCase $testCase, $page)
     {
@@ -39,7 +40,7 @@ class PageFactory
 
     /**
      * @param PageFactory\ElementLocatorFactory $factory
-     * @param Object                            $page
+     * @param object                            $page
      */
     public static function initElementsWithLocatorFactory(\Tzander\PageFactory\ElementLocatorFactory $factory, $page)
     {
@@ -48,7 +49,7 @@ class PageFactory
 
     /**
      * @param PageFactory\FieldDecorator $decorator
-     * @param Object                     $page
+     * @param object                     $page
      */
     public static function initElementsWithDecorator(\Tzander\PageFactory\FieldDecorator $decorator, $page)
     {
@@ -64,7 +65,8 @@ class PageFactory
         $reflection = new \ReflectionClass($page);
         $properties = $reflection->getProperties(\ReflectionProperty::IS_PUBLIC);
         foreach ($properties as $property) {
-            $element = $decorator->decorate($property);
+            $pageFactoryProperty = new ReflectionProperty($property);
+            $element = $decorator->decorate($pageFactoryProperty);
             $property->setAccessible(true);
             $property->setValue($page, $element);
         }
