@@ -1,5 +1,5 @@
 <phpunit backupGlobals="false" backupStaticAttributes="false"
-         bootstrap="bootstrap.php" colors="true" convertErrorsToExceptions="true"
+         bootstrap="../library/Autoload.php" colors="true" convertErrorsToExceptions="true"
          convertNoticesToExceptions="true" convertWarningsToExceptions="true"
          processIsolation="false" stopOnFailure="false" syntaxCheck="false"
         >
