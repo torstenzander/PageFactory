@@ -50,10 +50,10 @@ class DefaultElementLocator implements ElementLocator
             $element =  call_user_func(array($this->testCase, $methodName), $findBy->getArguments());
         }
         if (is_null($element)) {
-            $element = $this->testCase->byName($this->property);
+            $element = $this->testCase->byName($this->property->getPropertyName());
         }
         if (is_null($element)) {
-            $element = $this->testCase->byId($this->property);
+            $element = $this->testCase->byId($this->property->getPropertyName());
         }
         return $element;
     }
