@@ -79,7 +79,7 @@ class PageFactory
      */
     private static function instantiatePage(\PHPUnit_Extensions_Selenium2TestCase $testCase, $pageClassname)
     {
-        $page = new $pageClassname();
+        $page = new $pageClassname($testCase);
         return $page;
     }
 }
