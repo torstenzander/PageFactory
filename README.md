@@ -1,4 +1,4 @@
-PageFactory
+PageFactory for PHP
 ========================================================
 
 In order to support the PageObject pattern or PHP with Selenium2
