@@ -19,8 +19,6 @@ class PageFactoryTest extends \PHPUnit_Framework_TestCase
         $this->element = $this->getMock("PHPUnit_Extensions_Selenium2TestCase_Element", array(), array($driver, $url));
 
         $this->testCase = $this->getMock('PHPUnit_Extensions_Selenium2TestCase', array("byName", "byId", "byClassName"));
-
-
     }
 
     /**
