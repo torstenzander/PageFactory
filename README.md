@@ -5,9 +5,11 @@ Supports the PagePattern for PHP with Selenium2.
 
 You need to include the Autoload.php
 
-require_once __DIR__ . '/library/Autoload.php';
+
 
 ``` php
+ require_once __DIR__ . '/library/Autoload.php';
+
  class BingSearchPage {
 
     /**
