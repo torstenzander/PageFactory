@@ -1,10 +1,12 @@
 PageFactory
 ========================================================
 
-Supports the PagePattern for PHP with Selenium2.
+In order to support the PageObject pattern or PHP with Selenium2
 
-You need to include the Autoload.php
+Example
+--------
 
+You need to include the Autoload.php and create a page class.
 
 
 ``` php
@@ -17,7 +19,7 @@ You need to include the Autoload.php
      */
      public $sb_form_q;
 
-     public void search() {
+     public function search() {
          $this->sb_form_q->value('selenium');
          $this->sb_form_q->submit();
          return PageFactory::initElements($this->getTestCase(), 'SearchResultPage');
