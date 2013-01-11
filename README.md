@@ -16,7 +16,7 @@ require_once __DIR__ . '/library/Autoload.php';
      public $sb_form_q;
 
      public void search() {
-         $this->sb_form_q->value('selenium);
+         $this->sb_form_q->value('selenium');
          $this->sb_form_q->submit();
          return PageFactory::initElements($this->getTestCase(), 'SearchResultPage');
      }
