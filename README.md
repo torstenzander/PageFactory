@@ -24,7 +24,7 @@ require_once __DIR__ . '/library/Autoload.php';
 ```
 The property must be public and either the name or the id attribute of the element.
 
-Now in order to have an initialized object to return we call is like that:
+Now in order to have an initialized object to return we need to to the following:
 
 ``` php
   class  SearchTest{
