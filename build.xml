@@ -1,7 +1,7 @@
 <project name="pageFactory" default="build">
 
     <property file="build.properties"/>
-    <property name="source" value="library"/>
+    <property name="source" value="library/tzander"/>
 
     <property name="exclude_lib" value="tests"/>
 
