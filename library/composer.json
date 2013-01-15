@@ -1,0 +1,12 @@
+{
+    "name": "Tzander/PageFactory",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/torstenzander/PageFactory"
+        }
+    ],
+    "require": {
+        "Tzander/PageFactory": "*"
+    }
+}
