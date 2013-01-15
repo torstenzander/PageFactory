@@ -1,7 +1,7 @@
 PageFactory for PHP
 ========================================================
 
-In order to support the PageObject pattern or PHP with Selenium2
+Supports the PageObject pattern for PHP with Selenium2
 
 Example
 --------
