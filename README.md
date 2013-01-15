@@ -1,6 +1,19 @@
 PageFactory for PHP
 ========================================================
 
+Installation
+-------
+
+Install with [http://getcomposer.org/download/ composer]
+
+``` json
+{
+    "require": {
+        "tzander/page-factory": "dev-master"
+    }
+}
+```
+
 Supports the PageObject pattern for PHP with Selenium2
 
 Example
