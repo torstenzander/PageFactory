@@ -1,12 +1,17 @@
 {
     "name": "tzander/page-factory",
-    "repositories": [
+    "type": "library",
+    "description": "Php PageFactory for Selenium2",
+    "keywords": ["phpunit, selenium"],
+    "homepage": "http://tzander.de",
+    "license": "MIT",
+    "authors": [
         {
-            "type": "git",
-            "url": "https://github.com/torstenzander/PageFactory"
+            "name": "Torsten Zander",
+            "email": "info@tzander.de"
         }
     ],
     "require": {
-        "Tzander/PageFactory": "*"
+        "php": ">=5.3"
     }
 }
