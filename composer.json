@@ -2,7 +2,7 @@
     "name": "tzander/page-factory",
     "type": "library",
     "description": "Php PageFactory for Selenium2",
-    "keywords": ["phpunit, selenium"],
+    "keywords": ["phpunit", "selenium"],
     "homepage": "http://tzander.de",
     "license": "MIT",
     "authors": [
