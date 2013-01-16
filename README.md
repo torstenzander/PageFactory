@@ -1,10 +1,12 @@
 PageFactory for PHP
 ========================================================
 
+Supports the PageObject pattern for PHP with Selenium2
+
 Installation
 -------
 
-Install with [http://getcomposer.org/download/ composer]
+Install with [composer](http://getcomposer.org/download//)
 
 ``` json
 {
@@ -14,7 +16,7 @@ Install with [http://getcomposer.org/download/ composer]
 }
 ```
 
-Supports the PageObject pattern for PHP with Selenium2
+
 
 Example
 --------

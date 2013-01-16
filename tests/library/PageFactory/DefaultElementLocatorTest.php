@@ -21,8 +21,6 @@ class DefaultElementLocatorTest extends \PHPUnit_Framework_TestCase {
         $driver = $this->getMock("PHPUnit_Extensions_Selenium2TestCase_Driver", array(), array($url));
 
         $this->element = $this->getMock("PHPUnit_Extensions_Selenium2TestCase_Element", array(), array($driver, $url));
-
-
     }
 
     /**
