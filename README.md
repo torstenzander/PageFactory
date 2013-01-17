@@ -6,7 +6,7 @@ Supports the PageObject pattern for PHP with Selenium2
 Installation
 -------
 
-Install with [composer](http://getcomposer.org/download//)
+Install with [composer](http://getcomposer.org/download)
 
 ``` json
 {
