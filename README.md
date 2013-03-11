@@ -16,8 +16,6 @@ Install with [composer](http://getcomposer.org/download)
 }
 ```
 
-
-
 Example
 --------
 
