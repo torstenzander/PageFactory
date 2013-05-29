@@ -64,7 +64,8 @@ class FindBy
      */
     private function stripMethodName($string)
     {
-        $this->methodParts = explode("=", $string);
+        $this->methodParts[0] = substr($string, 0, strpos($string, '='));
+        $this->methodParts[1] = substr($string, strpos($string, '=') + 1);
         return $this->methodParts[0];
     }
 
@@ -73,7 +74,11 @@ class FindBy
      */
     public function getArguments()
     {
-        $stripped = str_replace(array('"', "'"), array("",""), $this->methodParts[1]);
+        if ('byXpath' === $this->methodName) {
+            $stripped = str_replace(array("\\"), array("/"), $this->methodParts[1]);
+        } else {
+            $stripped = str_replace(array('"', "'"), array("",""), $this->methodParts[1]);
+        }
         return $stripped;
     }
 }
