@@ -21,6 +21,16 @@ class FindByTest extends \PHPUnit_Framework_TestCase
         $find = new FindBy("byName='test'");
         $this->assertEquals("test", $find->getArguments());
     }
+    
+    /**
+     * @test
+     */
+    public function getArgumentsXpath()
+    {
+        $find = new FindBy("byXpath=//div[@id='element_name-test']/form[0]/label[2]");
+        $this->assertEquals("//div[@id='element_name-test']/form[0]/label[2]", $find->getArguments());
+    }    
+    
     /**
      * @test
      * @expectedException InvalidArgumentException
