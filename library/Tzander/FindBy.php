@@ -74,11 +74,9 @@ class FindBy
      */
     public function getArguments()
     {
-        if ('byXpath' === $this->methodName) {
-            $stripped = str_replace(array("\\"), array("/"), $this->methodParts[1]);
-        } else {
-            $stripped = str_replace(array('"', "'"), array("",""), $this->methodParts[1]);
+        if ('byXpath' !== $this->methodName) {
+            return str_replace(array('"', "'"), array("",""), $this->methodParts[1]);
         }
-        return $stripped;
+        return $this->methodParts[1];
     }
 }
