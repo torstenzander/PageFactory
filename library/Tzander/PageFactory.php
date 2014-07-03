@@ -19,7 +19,7 @@ class PageFactory
 
     /**
      * @param \PHPUnit_Extensions_Selenium2TestCase $testCase
-     * @param object                                $pageClassname
+     * @param string                                $pageClassname
      * @return mixed
      */
     public static function initElements(\PHPUnit_Extensions_Selenium2TestCase $testCase, $pageClassname)
